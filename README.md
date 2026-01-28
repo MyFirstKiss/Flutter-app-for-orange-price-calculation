@@ -52,35 +52,46 @@ cd orange-calculator-app-flutter
 flutter pub get
 ```
 
-### 3. ติดตั้ง Python Dependencies
+### 3. ติดตั้ง Python Dependencies และ Setup Database
 
 ```bash
 cd backend
 pip install -r requirements.txt
+
+# สร้างและ seed database
+python seed_db.py
 ```
+
+**หมายเหตุ:** Backend จะสร้าง database อัตโนมัติเมื่อรันครั้งแรก แต่แนะนำให้รัน `seed_db.py` เพื่อเติมข้อมูลเริ่มต้น
 
 ## 🚀 การรันแอป
 
-### 1. เริ่ม Backend Server
+### 1. เริ่ม Backend Server (ต้องรันก่อน!)
 
 ```bash
-python backend/main.py
+cd backend
+python main.py
 ```
 
-Backend จะทำงานที่: `http://localhost:8000`
+Backend จะทำงานที่: `http://localhost:8001`
 
-### 2. เริ่ม Flutter App
+### 2. เริ่ม Flutter App (รันในหน้าต่างใหม่)
 
 ```bash
-# รันบน Chrome
-flutter run -d chrome
-
-# รันบน Android
+# สำหรับ Android Emulator
 flutter run -d android
 
-# รันบน iOS
+# สำหรับ Chrome
+flutter run -d chrome
+
+# สำหรับ Windows Desktop
+flutter run -d windows
+
+# สำหรับ iOS
 flutter run -d ios
 ```
+
+**⚠️ สำคัญ:** สำหรับ Android Emulator, แอปจะเชื่อมต่อ backend ที่ `10.0.2.2:8001` (ซึ่งเป็น localhost ของ emulator)
 
 ## 📡 API Endpoints
 
