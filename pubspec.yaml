@@ -1,15 +1,17 @@
-name: orange_calculator_app
-description: แอปคำนวณราคาผลส้ม (Orange Calculator App)
-publish_to: 'none'
-version: 1.0.0+1
+name: orange_calculator_sdk
+description: Flutter SDK for calculating orange prices with real-time data from Talaadthai.com. Supports multiple orange types with automatic price updates.
+version: 1.0.0
+homepage: https://github.com/MyFirstKiss/Flutter-app-for-orange-price-calculation
+repository: https://github.com/MyFirstKiss/Flutter-app-for-orange-price-calculation
+issue_tracker: https://github.com/MyFirstKiss/Flutter-app-for-orange-price-calculation/issues
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.8
   http: ^1.2.2
   intl: ^0.19.0
 
