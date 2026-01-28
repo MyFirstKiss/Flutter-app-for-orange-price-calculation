@@ -7,7 +7,7 @@
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:orange_calculator_app/main.dart';
+import 'package:orange_calculator_sdk/main.dart';
 
 void main() {
   testWidgets('Orange Calculator App smoke test', (WidgetTester tester) async {

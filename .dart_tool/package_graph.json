@@ -1,13 +1,12 @@
 {
   "roots": [
-    "orange_calculator_app"
+    "orange_calculator_sdk"
   ],
   "packages": [
     {
-      "name": "orange_calculator_app",
-      "version": "1.0.0+1",
+      "name": "orange_calculator_sdk",
+      "version": "1.0.0",
       "dependencies": [
-        "cupertino_icons",
         "flutter",
         "http",
         "intl"
@@ -60,11 +59,6 @@
         "meta",
         "web"
       ]
-    },
-    {
-      "name": "cupertino_icons",
-      "version": "1.0.8",
-      "dependencies": []
     },
     {
       "name": "flutter",
