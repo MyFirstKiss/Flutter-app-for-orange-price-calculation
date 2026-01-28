@@ -1,35 +1,38 @@
 # Orange Price Scraper Backend
 
-Python FastAPI backend that scrapes daily orange prices from talaadthai.com.
+Python FastAPI backend with SQLite database for the Orange Calculator App.
 
 ## Features
 
-- 🍊 Scrapes fruit prices from talaadthai.com
-- 🔍 Filters for specific orange varieties: แมนดาริน, เขียวหวาน, สายน้ำผึ้ง
-- 📊 Returns structured JSON data
-- 🚀 FastAPI with automatic API documentation
-- 🌐 CORS enabled for mobile app access
+- 🍊 Real-time orange price data
+- 🔍 Supports 3 orange varieties: แมนดาริน, เขียวหวาน, สายน้ำผึ้ง
+- 📊 RESTful API with automatic documentation
+- 💾 SQLite database for data persistence
+- 🚀 FastAPI with async support
+- 🌐 CORS enabled for Flutter app access
+
+## Requirements
+
+- Python 3.11 or higher
+- pip (Python package manager)
 
 ## Installation
 
-1. Create a virtual environment:
-```bash
-python -m venv venv
-```
+### 1. Install Python Dependencies
 
-2. Activate the virtual environment:
-```bash
-# Windows
-venv\Scripts\activate
-
-# macOS/Linux
-source venv/bin/activate
-```
-
-3. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
+
+### 2. Initialize Database (Optional but Recommended)
+
+```bash
+python seed_db.py
+```
+
+This will create the database and populate it with initial orange data.
+
+**Note:** If you skip this step, the database will be created automatically when you first run the server, but it won't have any initial data until you add it through the API.
 
 ## Running the Server
 
@@ -37,12 +40,15 @@ pip install -r requirements.txt
 python main.py
 ```
 
-Or using uvicorn directly:
-```bash
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
-```
+The server will start at `http://localhost:8001`
 
-The server will start at `http://localhost:8000`
+**Important:** The server must be running before starting the Flutter app.
+
+### For Development (with auto-reload):
+
+```bash
+uvicorn main:app --reload --host 0.0.0.0 --port 8001
+```
 
 ## API Endpoints
 
