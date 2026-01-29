@@ -1,10 +1,10 @@
 # Class Diagram - Orange Calculator App
 
-## 2.1. ภาพรวมระบบ
+## 2.3. ภาพรวมระบบ
 
 ระบบ Orange Calculator App เป็นแอปพลิเคชัน Flutter สำหรับจัดการข้อมูลและคำนวณราคาผลส้ม ประกอบด้วยส่วนหลัก 4 ส่วน:
 
-### 2.1.1. Screen Layer (ชั้นการแสดงผล)
+### 2.3.1. Screen Layer (ชั้นการแสดงผล)
 คลาสสำหรับการแสดงผลหน้าจอต่างๆ ของแอปพลิเคชัน โดยแต่ละ Screen จะรับผิดชอบการแสดงผลและโต้ตอบกับผู้ใช้
 
 - **HomeScreen**: หน้าจอหลักที่แสดงเมนูและภาพรวมของระบบ มีปุ่มนำทางไปยังหน้าต่างๆ
@@ -13,24 +13,24 @@
 - **LivePricesScreen**: หน้าจอแสดงราคาส้มแบบเรียลไทม์จาก API ที่ดึงข้อมูลจากเว็บไซต์ตลาดไทย
 - **HistoryScreen**: หน้าจอแสดงประวัติการคำนวณและสถิติการใช้งาน
 
-### 2.1.2. Model Layer (ชั้นข้อมูล)
+### 2.3.2. Model Layer (ชั้นข้อมูล)
 คลาสที่เก็บข้อมูลและโครงสร้างข้อมูลของแอปพลิเคชัน
 
 - **OrangeType**: คลาสที่เก็บข้อมูลชนิดของส้ม ประกอบด้วย id, ชื่อ (name), ราคาต่อกิโลกรัม (pricePerKg), ขนาด (height, radius, diameter), น้ำหนักเฉลี่ย (weightAvgG), สี (color), เกรด (grade), และคำอธิบาย (description) รวมถึงฟังก์ชัน fromJson และ toJson สำหรับแปลงข้อมูล JSON
 - **PriceCalculation**: คลาสที่เก็บข้อมูลการคำนวณราคา ประกอบด้วย id, ชนิดส้ม (orangeType), ชื่อส้ม (orangeName), น้ำหนัก (weightKg), ราคาต่อกิโลกรัม (pricePerKg), ราคารวม (totalPrice), และวันที่ (date)
 
-### 2.1.3. Service Layer (ชั้นบริการ)
+### 2.3.3. Service Layer (ชั้นบริการ)
 คลาส Service ที่ทำหน้าที่เชื่อมต่อกับ Backend API
 
 - **ApiService**: คลาส Service ที่จัดการการเชื่อมต่อกับ Backend API เพื่อดึงข้อมูลส้ม (fetchOranges), คำนวณราคา (calculatePrice), ดึงราคาแบบเรียลไทม์ (fetchLivePrices), ดึงประวัติการคำนวณ (fetchCalculations), และดึงสถิติ (fetchStatistics)
 
-### 2.1.4. ความสัมพันธ์ระหว่าง Class
+### 2.3.4. ความสัมพันธ์ระหว่าง Class
 
 - **Screen → Service**: ทุก Screen ที่ต้องการข้อมูลจะมี ApiService เป็น attribute และเรียกใช้งาน
 - **Service → Model**: ApiService จะคืนค่าเป็น OrangeType และ PriceCalculation
 - **Screen → Model**: Screen ใช้ Model เพื่อแสดงผลและจัดการข้อมูล
 
-## 2.2. Class Diagram
+## 2.3.5. Class Diagram
 
 ```mermaid
 classDiagram
@@ -167,9 +167,9 @@ classDiagram
     ApiService ..> PriceCalculation : คืนค่า
 ```
 
-## 2.3. คำอธิบายแต่ละ Class โดยละเอียด
+## 2.3.6. คำอธิบายแต่ละ Class โดยละเอียด
 
-### 2.3.1. Model Classes
+### 2.3.6.1. Model Classes
 
 #### OrangeType
 คลาสที่เก็บข้อมูลชนิดของส้ม มี attributes และ methods ดังนี้:
@@ -206,7 +206,7 @@ classDiagram
 - `fromJson(Map)`: สร้าง PriceCalculation object จาก JSON
 - `toJson()`: แปลง PriceCalculation object เป็น JSON
 
-### 2.3.2. Service Classes
+### 2.3.6.2. Service Classes
 
 #### ApiService
 คลาสจัดการการเชื่อมต่อกับ Backend API:
@@ -223,7 +223,7 @@ classDiagram
 - `fetchCalculations(int)`: ดึงประวัติการคำนวณล่าสุด → Future<List<PriceCalculation>>
 - `fetchStatistics()`: ดึงข้อมูลสถิติการใช้งาน → Future<Map?>
 
-### 2.3.3. Screen Classes
+### 2.3.6.3. Screen Classes
 
 #### HomeScreen
 หน้าจอหลักแสดงเมนูหลักของแอป:
@@ -330,9 +330,9 @@ classDiagram
 - รองรับการลบประวัติพร้อมฟังก์ชัน undo
 - แสดงรายละเอียดแต่ละครั้งที่คำนวณ (ชนิด, น้ำหนัก, ราคา, วันที่)
 
-## 2.4. การทำงานร่วมกันของ Classes
+## 2.3.7. การทำงานร่วมกันของ Classes
 
-### 2.4.1. การโหลดข้อมูล (Data Loading Flow)
+### 2.3.7.1. การโหลดข้อมูล (Data Loading Flow)
 ```
 1. Screen (เช่น DataScreen) → initState()
 2. เรียก _loadOranges()
@@ -344,7 +344,7 @@ classDiagram
 8. UI อัพเดทแสดงข้อมูลใหม่
 ```
 
-### 2.4.2. การคำนวณราคา (Price Calculation Flow)
+### 2.3.7.2. การคำนวณราคา (Price Calculation Flow)
 ```
 1. ผู้ใช้เลือกชนิดส้มใน CalculatorScreen
 2. ผู้ใช้กรอกน้ำหนัก (เช่น 2.5 กก.)
@@ -358,7 +358,7 @@ classDiagram
 10. แสดงผลราคารวมบนหน้าจอ
 ```
 
-### 2.4.3. การแสดงประวัติ (History Display Flow)
+### 2.3.7.3. การแสดงประวัติ (History Display Flow)
 ```
 1. HistoryScreen → initState() → _loadData()
 2. เรียก ApiService.fetchCalculations(limit: 100)
@@ -372,13 +372,13 @@ classDiagram
 10. แสดงรายการประวัติและสถิติบนหน้าจอ
 ```
 
-### 2.4.4. Error Handling และ Fallback
+### 2.3.7.4. Error Handling และ Fallback
 - เมื่อ API ไม่ตอบสนอง: ApiService ใช้ข้อมูล local (orangeTypes) แทน
 - เมื่อเกิด error: แสดงข้อความแจ้งเตือนผู้ใช้
 - Loading states: แสดง CircularProgressIndicator ระหว่างรอข้อมูล
 - Validation: ตรวจสอบ input ก่อนส่งไป API
 
-## 2.5. สรุป
+## 2.3.8. สรุป
 
 ระบบ Orange Calculator App ออกแบบโดยแยก concern ของแต่ละส่วนอย่างชัดเจน:
 
